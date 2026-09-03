@@ -1,1 +1,2 @@
-# Restaurant-Inventory-Analysis
+# 100-day restaurant inventory analysis
+![](Restaurant.jpg)
