@@ -32,4 +32,4 @@ This project analyzes **100 days of restaurant inventory data** to understand st
 
   Built a structured Power BI data model linking the inventory fact table to a dedicated date dimension and DAX measures for analysis.
 
-  ![]()
+  ![](data_model.png)
