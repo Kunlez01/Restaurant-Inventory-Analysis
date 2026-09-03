@@ -27,3 +27,9 @@ This project analyzes **100 days of restaurant inventory data** to understand st
 - Supplier Analysis: Compared suppliers using inventory, lead-time, and waste-related metrics.
 - Data Visualization: Used KPI cards, charts, tables, slicers, and conditional formatting.
 - Business Intelligence: Transformed raw inventory records into an interactive decision-support
+
+  ## Modeling
+
+  Built a structured Power BI data model linking the inventory fact table to a dedicated date dimension and DAX measures for analysis.
+
+  ![]()
