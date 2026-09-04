@@ -2,12 +2,29 @@
 
 ![](Restaurant.jpg)
 ---
-## Introduction
 
+# Restaurant Inventory Intelligence Dashboard
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Business Problem](#business-problem)
+3. [Skills & Technologies](#skills--technologies)
+4. [Data Modeling](#data-modeling)
+5. [Dashboard Analysis](#dashboard-analysis)
+   - [Dashboard 1 — Inventory Overview](#dashboard-1--inventory-overview)
+   - [Dashboard 2 — Inventory & Waste Analysis](#dashboard-2--inventory--waste-analysis)
+   - [Dashboard 3 — Supplier & Replenishment](#dashboard-3--supplier--replenishment)
+6. [Business Recommendations](#business-recommendations)
+7. [Conclusion](#conclusion)
+8. [ Executive Takeaway](#Executive-Takeaway)
+
+
+## Introduction
 This project analyzes **100 days of restaurant inventory data** to understand stock levels, usage patterns, replenishment risks, supplier performance, and waste. Using Power BI, I transformed raw inventory data into an interactive dashboard that provides actionable insights for monitoring inventory health, identifying items requiring replenishment, and tracking waste and stock coverage.
 
 
-## Problem Statement
+## Business Statement
 
 1. **Limited inventory visibility:** Restaurant inventory data can be difficult to monitor consistently across different items, categories, and suppliers.
 2. **Replenishment uncertainty:** Without clear stock coverage and lead-time analysis, it can be difficult to identify items that may require replenishment.
@@ -16,7 +33,7 @@ This project analyzes **100 days of restaurant inventory data** to understand st
 5. **Supplier comparison:** Supplier performance can be difficult to evaluate without comparing factors such as stock value, lead time, replenishment risk, and waste.
 6. **Lack of interactive reporting:** Raw inventory records do not provide an easy way to filter, investigate, and communicate inventory trends and risks to decision-makers.
 
-   ## Skills & Concepts Demonstrated
+   ## Skills & Technologies
 
 - Power BI Dashboard Development: Designed a multi-page interactive inventory dashboard.
 - Power Query: Cleaned and transformed inventory data for analysis.
@@ -34,7 +51,7 @@ This project analyzes **100 days of restaurant inventory data** to understand st
 
   ![](data_model.png)
 
-  ## Visualization
+  ## Dashboard Analysis
 
   ### The Report Comprises of Three Pages
   1. Inventory Overview
@@ -104,7 +121,7 @@ This page goes deeper into consumption, inventory waste, and replenishment risk.
  This page focuses on supplier performance, inventory exposure, stock coverage, and immediate replenishment priorities.
 
 ### Filters
-Date Range: Controls the period being analyzed.
+- Date Range: Controls the period being analyzed.
 
 ### KPI Cards
 - Suppliers: Number of suppliers within the selected period.
@@ -119,20 +136,6 @@ Date Range: Controls the period being analyzed.
 - Item-Level Inventory Health & Replenishment Status: Provides detailed item-level analysis of stock, usage, reorder level, stock coverage, lead time, gap, and risk status.
 
 **Main purpose**: Answer, Which suppliers are involved, where is inventory exposure concentrated, which items are at risk, and what should be prioritized for replenishment?
-
-## Conclusion
-
-The Restaurant Inventory Intelligence dashboard provides a comprehensive view of inventory value, **consumption, waste, stock coverage, supplier lead time, and replenishment risk.**
-
-The analysis shows that inventory performance is influenced by both **consumption patterns and supplier replenishment timelines**. While most items maintain healthy stock levels, some items have stock coverage that is close to or below supplier lead times, creating potential stock-out risks.
-
-The waste analysis also highlights that a relatively small number of items contribute a significant share of the estimated waste value. This suggests that targeted monitoring of high-waste items could have a greater impact than applying the same controls across all inventory.
-
-Overall, the dashboard transforms inventory data into actionable insights through three stages:
-
-**Inventory Overview → Waste & Consumption Analysis → Supplier & Replenishment Priorities**
-
-This provides management with a clearer basis for identifying risks and making informed inventory decisions.
 
 ## Key Recommendations
 
@@ -175,6 +178,20 @@ Consider setting targets for:
 - Daily Consumption
 
 These targets can be used to monitor whether inventory performance improves over time.
+
+## Conclusion
+
+The Restaurant Inventory Intelligence dashboard provides a comprehensive view of inventory value, **consumption, waste, stock coverage, supplier lead time, and replenishment risk.**
+
+The analysis shows that inventory performance is influenced by both **consumption patterns and supplier replenishment timelines**. While most items maintain healthy stock levels, some items have stock coverage that is close to or below supplier lead times, creating potential stock-out risks.
+
+The waste analysis also highlights that a relatively small number of items contribute a significant share of the estimated waste value. This suggests that targeted monitoring of high-waste items could have a greater impact than applying the same controls across all inventory.
+
+Overall, the dashboard transforms inventory data into actionable insights through three stages:
+
+**Inventory Overview → Waste & Consumption Analysis → Supplier & Replenishment Priorities**
+
+This provides management with a clearer basis for identifying risks and making informed inventory decisions.
 
 - **Review inventory performance regularly**
 
