@@ -202,3 +202,10 @@ Regular monitoring can help identify emerging problems before they become costly
 ## Executive Takeaway
 
 **The analysis indicates that inventory efficiency can be improved by targeting high-value waste items, monitoring stock coverage against supplier lead times, and using consumption patterns to support smarter replenishment decisions.**
+
+**OLUKUNLE OYEWALE**
+Data Analyst
+
+- 🔗 [Linkedin](https://www.linkedin.com/in/olukunle034/)
+- 💼  [Check Out My Full Portfolio Website](https://kunlez01.github.io/kunlez.github.io/)
+- 📧 [Email](kunlex.mth01@gmail.com)
