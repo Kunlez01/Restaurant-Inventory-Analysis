@@ -59,7 +59,7 @@ All figures below are for **22 June 2025**, the date selected in the screenshots
 - **Inventory Health by Category** shows Non-Veg at 2.84 days of stock cover (Watch) and Veg at 5.51 days (Healthy)
 
 ### Inventory & Waste Analysis
-![Inventory and Waste Analysis](Waste_Dashboard.png)
+![Inventory and Waste Analysis](Waste_Dashboards.png)
 
 - Waste quantity per day (0.82 units), average waste % (2.23%), estimated daily waste value and average usage per item (3.70)
 - **Top 5 items by waste value:** Mutton, Chicken, Paneer, Rohu Fish and Milk
@@ -67,7 +67,7 @@ All figures below are for **22 June 2025**, the date selected in the screenshots
 - **Waste value by supplier**, plus top 5 items by daily usage and by waste quantity
 
 ### Supplier & Replenishment
-![Supplier and Replenishment](Replenishment_Dashboard.png)
+![Supplier and Replenishment](Replenishment_Dashboard.png.png)
 
 - 3 suppliers, 2.2 days average lead time, 4.0 average days of stock cover
 - **Inventory health:** 4 items Healthy, 5 Watch and 1 At Risk
