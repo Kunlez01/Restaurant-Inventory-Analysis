@@ -1,211 +1,125 @@
-# 100-day restaurant inventory analysis
+# Restaurant Inventory Intelligence Dashboard | Power BI
 
-![](Restaurant.jpg)
----
+![Restaurant](Restaurant.jpg)
 
-# Restaurant Inventory Intelligence Dashboard
+An independent portfolio project. I built a three-page Power BI dashboard on 100 days of restaurant inventory data to show which items are close to running out before the next delivery, where waste is concentrated, and how suppliers compare.
 
 ## Table of Contents
+1. [Project Overview](#1-project-overview)
+2. [Dataset](#2-dataset)
+3. [Data Model](#3-data-model)
+4. [Dashboard Pages](#4-dashboard-pages)
+5. [Key Metrics Defined](#5-key-metrics-defined)
+6. [Key Findings](#6-key-findings)
+7. [Version 2 Corrections](#7-version-2-corrections)
+8. [Recommendations](#8-recommendations)
+9. [Limitations](#9-limitations)
+10. [Author](#10-author)
 
-1. [Introduction](#introduction)
-2. [Business Problem](#business-problem)
-3. [Skills & Technologies](#skills--technologies)
-4. [Data Modeling](#data-modeling)
-5. [Dashboard Analysis](#dashboard-analysis)
-   - [Dashboard 1 — Inventory Overview](#dashboard-1--inventory-overview)
-   - [Dashboard 2 — Inventory & Waste Analysis](#dashboard-2--inventory--waste-analysis)
-   - [Dashboard 3 — Supplier & Replenishment](#dashboard-3--supplier--replenishment)
-6. [Business Recommendations](#business-recommendations)
-7. [Conclusion](#conclusion)
-8. [ Executive Takeaway](#Executive-Takeaway)
+---
 
+## 1. Project Overview
 
-## Introduction
-This project analyzes **100 days of restaurant inventory data** to understand stock levels, usage patterns, replenishment risks, supplier performance, and waste. Using Power BI, I transformed raw inventory data into an interactive dashboard that provides actionable insights for monitoring inventory health, identifying items requiring replenishment, and tracking waste and stock coverage.
+**Context:** A restaurant needs to keep enough stock to cover each supplier's delivery time without over-ordering or wasting food.
 
+**Problem:** Raw inventory records make it hard to see which items will run out before the next delivery, which items lose the most value to waste, and which suppliers carry the most exposure.
 
-## Business Statement
+**Approach:** I cleaned and modelled the data in Power Query, wrote DAX measures for stock cover, waste and usage, and built three linked report pages with a date filter and a Veg / Non-Veg category filter.
 
-1. **Limited inventory visibility:** Restaurant inventory data can be difficult to monitor consistently across different items, categories, and suppliers.
-2. **Replenishment uncertainty:** Without clear stock coverage and lead-time analysis, it can be difficult to identify items that may require replenishment.
-3. **Stock usage monitoring:** Daily usage patterns need to be tracked to understand how quickly inventory is being consumed.
-4. **Waste management:** Waste percentage and waste value need to be monitored to identify areas where inventory losses may be occurring.
-5. **Supplier comparison:** Supplier performance can be difficult to evaluate without comparing factors such as stock value, lead time, replenishment risk, and waste.
-6. **Lack of interactive reporting:** Raw inventory records do not provide an easy way to filter, investigate, and communicate inventory trends and risks to decision-makers.
+**Outcome:** A dashboard that gives a clear picture of inventory health for any selected date, with each item marked Healthy, Watch or At Risk.
 
-   ## Skills & Technologies
+## 2. Dataset
 
-- Power BI Dashboard Development: Designed a multi-page interactive inventory dashboard.
-- Power Query: Cleaned and transformed inventory data for analysis.
-- DAX: Created KPIs and measures for inventory monitoring and risk analysis.
-- Data Modeling: Built a date dimension and relationships with the inventory fact table.
-- Inventory Analysis: Analyzed stock levels, daily usage, stock coverage, and replenishment needs.
-- Waste Analysis: Monitored waste percentage and waste value.
-- Supplier Analysis: Compared suppliers using inventory, lead-time, and waste-related metrics.
-- Data Visualization: Used KPI cards, charts, tables, slicers, and conditional formatting.
-- Business Intelligence: Transformed raw inventory records into an interactive decision-support
+- 1,000 records: 10 items recorded on each of 100 days (10 June to 17 September 2025)
+- 2 categories (Veg, Non-Veg) and 3 suppliers
+- 14 fields, including item, category, current stock, reorder level, daily usage, lead time, price per unit, supplier and waste percentage
+- `Waste_Percentage` is stored as a whole-number percentage (for example, 2.03 means 2.03%)
 
-  ## Modeling
+Supplier and lead time can change from day to day for the same item, so supplier results describe the selected date.
 
-  Built a structured Power BI data model linking the inventory fact table to a dedicated date dimension and DAX measures for analysis.
+## 3. Data Model
 
-  ![](data_model.png)
+A star-style model in Power BI:
 
-  ## Dashboard Analysis
+- **Fact_Inventory:** daily inventory records
+- **Dim_Date:** a date dimension linked to the fact table
+- **_Measure:** a table holding the DAX measures (for example, stock cover, waste quantity, waste value, average lead time and coverage status)
 
-  ### The Report Comprises of Three Pages
-  1. Inventory Overview
-  2. Inventory & Waste Analysis
-  3. Supplier & Replenishment
+![Data model](data_model.png)
 
- You can interact with the report [here](https://app.powerbi.com/groups/me/reports/9dc5e688-b997-4b15-beef-fd0b90d57c9c/1d3f6022a7547b515954?experience=power-bi)
+## 4. Dashboard Pages
 
+All figures below are for **22 June 2025**, the date selected in the screenshots. Every figure changes with the date filter.
 
-## Inventory Overview
+### Inventory Overview
+![Inventory Overview](Overview_Dashboard.png)
 
- ![](Overview_Dashboard.png)
+- Daily inventory value, estimated daily usage value, estimated daily waste value, average waste % (2.23%), total daily usage (37.0 units across all items) and the selected inventory date
+- **Stock Cover vs Lead Time** compares each item's days of cover with its supplier lead time
+- **Inventory Health by Category** shows Non-Veg at 2.84 days of stock cover (Watch) and Veg at 5.51 days (Healthy)
 
-This page is the executive-level view of the restaurant's inventory.
+### Inventory & Waste Analysis
+![Inventory and Waste Analysis](Waste_Dashboard.png)
 
-### Filters
-- Category: Filter between Non-Veg and Veg.
-- Date Range: Select the inventory period to analyze.
-- Supplier: Filter the dashboard by supplier.
+- Waste quantity per day (0.82 units), average waste % (2.23%), estimated daily waste value and average usage per item (3.70)
+- **Top 5 items by waste value:** Mutton, Chicken, Paneer, Rohu Fish and Milk
+- **Waste rate by category:** Non-Veg 2.34%, Veg 2.08%
+- **Waste value by supplier**, plus top 5 items by daily usage and by waste quantity
 
-### KPI Cards
-- Daily Inventory Value: Shows the value of inventory for the selected date/filter.
-- Estimated Daily Waste Value: Shows the estimated monetary value of daily inventory waste.
-- Avg. Days of Stock Cover: Shows approximately how many days the available stock can support current usage.
-- Average Waste %: Shows the average percentage of inventory usage considered waste.
-- Items at Replenishment Risk: Counts items whose stock coverage indicates a replenishment concern.
-- Inventory Date: Shows the selected/current inventory date.
+### Supplier & Replenishment
+![Supplier and Replenishment](Replenishment_Dashboard.png)
 
-### Charts & Tables
-- Stock Cover vs Lead Time: Compares each item's stock coverage with its lead time, helping identify potential replenishment concerns.
--  Daily Inventory Usage: Shows daily inventory usage together with the 7-Day Moving Average to make the usage trend easier to observe.
-- Daily Inventory Value by Category: Compares inventory value between Non-Veg and Veg.
-- Inventory Health by Category: Provides a category-level summary of inventory value, daily usage, stock days, lead time, waste %, and stock status.
+- 3 suppliers, 2.2 days average lead time, 4.0 average days of stock cover
+- **Inventory health:** 4 items Healthy, 5 Watch and 1 At Risk
+- **Immediate replenishment priority:** Chicken from Supplier A, with 2.5 days of cover against a 4-day lead time (a gap of -1.5 days)
+- Current inventory value by supplier, and an item-level table of stock, usage, cover, lead time, gap and status
 
-**Main purpose**: Quickly answer, How healthy is the restaurant's inventory right now?
+## 5. Key Metrics Defined
 
-## Inventory & Waste Analysis
+| Metric | Definition |
+|---|---|
+| Days of Stock Cover | Current stock divided by daily usage |
+| Gap | Days of stock cover minus supplier lead time |
+| Stock Status | At Risk when the gap is below zero, Watch when cover is only slightly above lead time, otherwise Healthy |
+| Waste Quantity | Daily usage multiplied by waste percentage |
+| Waste Value | Waste quantity multiplied by price per unit |
+| Total Daily Usage | Sum of daily usage across all items in the selected period |
+| Average Daily Usage | Average of the daily totals across the selected days |
 
-![](Waste_Dashboard.png)
+## 6. Key Findings
 
-This page goes deeper into consumption, inventory waste, and replenishment risk.
+- **Stock risk (22 June 2025):** 1 of 10 items was At Risk. Chicken had 2.5 days of cover and a 4-day lead time, so it would have run out before replenishment arrived. Five more items were on Watch.
+- **Waste is concentrated:** On 22 June 2025, Mutton, Chicken and Paneer made up about 87% of the estimated waste value. Over all 100 days, Mutton, Paneer and Rohu Fish led waste value.
+- **Category difference:** Non-Veg had a higher waste rate (2.34%) and lower stock cover (2.84 days) than Veg (2.08% and 5.51 days) on that date.
+- **Supplier exposure:** Supplier B carried the largest share of both inventory value and estimated waste value on that date.
 
-### Filters
-- Category: Non-Veg / Veg.
-- Date Range: Controls the period being analyzed.
+## 7. Version 2 Corrections
 
-### KPI Cards
-- Total Usage: Total inventory usage within the selected period.
-- Avg. Daily Usage: Average amount used per day.
-- Average Waste %: Average waste percentage.
-- Estimated Waste Value: Estimated monetary value of the waste.
-- Items at Replenishment Risk: Number of items currently identified as requiring replenishment attention.
+After the first release, I reviewed the dashboard against the raw data and corrected the following:
 
-### Charts
-- Top 5 Items by Waste Value: Ranks the items contributing the highest estimated waste value.
-- Top 5 Items by Daily Usage: Identifies the items with the highest daily consumption.
-- Waste Rate by Category: Compares waste percentages between Veg and Non-Veg.
-- Stock Cover vs Lead Time: Helps identify items where available stock coverage may not comfortably cover supplier lead time.
-- Daily Waste Value & 7-Day Moving Avg: Tracks waste value over time and compares it with the 7-day moving average.
+- **Waste calculation:** the waste percentage is stored as a whole number, so it must be divided by 100. The first version overstated waste quantity and waste value by 100 times. The corrected version reconciles with the raw file.
+- **Consistent date selection:** all three pages now use the same date selection, so the numbers on each page describe the same day.
+- **Clearer labels:** KPI cards now say what they measure, for example separating total usage for all items from average usage per item.
 
-**Main purpose**: Answer, How much are we using and wasting, which items contribute most to waste, and where is replenishment becoming a concern?
+## 8. Recommendations
 
- ## Supplier & Replenishment
+1. **Reorder items whose cover is below their lead time**, and review items on Watch before they become At Risk.
+2. **Focus waste reduction on the few items that drive most of the loss**, such as Mutton, Chicken and Paneer.
+3. **Review supplier lead times**, especially where a long lead time pushes an item into At Risk.
+4. **Set targets** for days of stock cover, waste % and replenishment risk, and review them regularly.
 
- ![](Replenishment_Dashboard.png)
+## 9. Limitations
 
- This page focuses on supplier performance, inventory exposure, stock coverage, and immediate replenishment priorities.
+- The dataset covers 10 items over 100 days, so conclusions apply to this sample and not to a whole restaurant's menu.
+- Results depend on the selected date. Supplier and lead time change from day to day, so supplier findings describe a single date.
+- The analysis shows patterns. It does not explain why waste or stock levels change.
 
-### Filters
-- Date Range: Controls the period being analyzed.
+## 10. Author
 
-### KPI Cards
-- Suppliers: Number of suppliers within the selected period.
-- Avg. Lead Time: Average supplier replenishment time.
-- Items at Coverage Risk: Number of items currently identified as being at coverage risk.
-- Coverage Risk Rate: Percentage of items identified as being at coverage risk.
-### Charts & Tables
-- Estimated Waste Value by Supplier: Compares estimated waste value across suppliers.
-- Inventory Health Status: Categorizes inventory into Healthy, Watch, and At Risk.
-- Current Inventory Value by Supplier: Compares inventory value associated with each supplier.
-- Immediate Replenishment Priorities: Highlights items requiring immediate replenishment based on stock cover, lead time, and coverage gap.
-- Item-Level Inventory Health & Replenishment Status: Provides detailed item-level analysis of stock, usage, reorder level, stock coverage, lead time, gap, and risk status.
+**Olukunle Oyewale** | Data Analyst
 
-**Main purpose**: Answer, Which suppliers are involved, where is inventory exposure concentrated, which items are at risk, and what should be prioritized for replenishment?
+- [LinkedIn](https://www.linkedin.com/in/olukunle034/)
+- [Portfolio](https://kunlez01.github.io/kunlez.github.io/)
+- [GitHub](https://github.com/Kunlez01)
 
-## Key Recommendations
-
-- **Prioritize high-waste items**
-
-Focus waste-reduction efforts on items contributing the highest estimated waste value, particularly Mutton, Paneer, Rohu Fish, and Chicken.
-
-Review purchasing quantities, storage practices, shelf-life management, and consumption patterns for these items.
-
-- **Monitor replenishment-risk items**
-
-Prioritize items where Days of Stock Cover is lower than or close to Supplier Lead Time.
-
-These items should be reviewed regularly to reduce the possibility of stock-outs before the next delivery arrives.
-
-- **Use consumption patterns to guide purchasing**
-
-Use current stock, daily usage, stock coverage, and supplier lead time together when making replenishment decisions.
-
-This can help balance the risk of stock-outs against unnecessary overstocking.
-
-- **Monitor supplier lead times**
-
-Track suppliers with longer lead times and identify opportunities to improve replenishment planning or consider alternative sourcing where appropriate.
-
-- **Investigate the drivers of waste**
-
-Rather than focusing only on overall waste percentages, investigate the individual products responsible for the highest waste values.
-
-This allows management to target the areas with the greatest potential financial impact.
-
-- **Establish inventory performance targets**
-
-Consider setting targets for:
-
-- Waste %
-- Waste Value
-- Days of Stock Cover
-- Replenishment Risk
-- Daily Consumption
-
-These targets can be used to monitor whether inventory performance improves over time.
-
-## Conclusion
-
-The Restaurant Inventory Intelligence dashboard provides a comprehensive view of inventory value, **consumption, waste, stock coverage, supplier lead time, and replenishment risk.**
-
-The analysis shows that inventory performance is influenced by both **consumption patterns and supplier replenishment timelines**. While most items maintain healthy stock levels, some items have stock coverage that is close to or below supplier lead times, creating potential stock-out risks.
-
-The waste analysis also highlights that a relatively small number of items contribute a significant share of the estimated waste value. This suggests that targeted monitoring of high-waste items could have a greater impact than applying the same controls across all inventory.
-
-Overall, the dashboard transforms inventory data into actionable insights through three stages:
-
-**Inventory Overview → Waste & Consumption Analysis → Supplier & Replenishment Priorities**
-
-This provides management with a clearer basis for identifying risks and making informed inventory decisions.
-
-- **Review inventory performance regularly**
-
-Use the dashboard as a recurring management tool to monitor changes in inventory, consumption, waste, and replenishment risk.
-
-Regular monitoring can help identify emerging problems before they become costly operational issues.
-
-## Executive Takeaway
-
-**The analysis indicates that inventory efficiency can be improved by targeting high-value waste items, monitoring stock coverage against supplier lead times, and using consumption patterns to support smarter replenishment decisions.**
-
-**OLUKUNLE OYEWALE**
-Data Analyst
-
-- 🔗 [Linkedin](https://www.linkedin.com/in/olukunle034/)
-- 💼  [Check Out My Full Portfolio Website](https://kunlez01.github.io/kunlez.github.io/)
-- 📧 [Email](kunlex.mth01@gmail.com)
+*Last updated: November 2026*
