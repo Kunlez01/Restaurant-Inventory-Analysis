@@ -52,7 +52,7 @@ A star-style model in Power BI:
 All figures below are for **22 June 2025**, the date selected in the screenshots. Every figure changes with the date filter.
 
 ### Inventory Overview
-![Inventory Overview](Overview_Dashboard.png)
+![Inventory Overview](Overview_Dashboards.png)
 
 - Daily inventory value, estimated daily usage value, estimated daily waste value, average waste % (2.23%), total daily usage (37.0 units across all items) and the selected inventory date
 - **Stock Cover vs Lead Time** compares each item's days of cover with its supplier lead time
@@ -67,7 +67,7 @@ All figures below are for **22 June 2025**, the date selected in the screenshots
 - **Waste value by supplier**, plus top 5 items by daily usage and by waste quantity
 
 ### Supplier & Replenishment
-![Supplier and Replenishment](Replenishment_Dashboard.png.png)
+![Supplier and Replenishment](Replenishment_Dashboards.png)
 
 - 3 suppliers, 2.2 days average lead time, 4.0 average days of stock cover
 - **Inventory health:** 4 items Healthy, 5 Watch and 1 At Risk
